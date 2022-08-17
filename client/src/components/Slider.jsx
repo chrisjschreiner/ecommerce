@@ -132,8 +132,8 @@ const Slider = () => {
           </ImgContainer>
           <InfoContainer>
             <Title>SUMMER SALE</Title>
-            <Desc>ALL PAST SEASON'S GEAR UP TO 75% OFF!</Desc>
-            <Link to="/products/women">
+            <Desc>ALL PAST SEASON'S JACKETS UP TO 75% OFF!</Desc>
+            <Link to="/products/jackets">
               <Button>SHOP NOW</Button>
             </Link>
           </InfoContainer>
@@ -149,10 +149,8 @@ const Slider = () => {
           </ImgContainer>
           <InfoContainer>
             <Title>NEW GEAR</Title>
-            <Desc>
-              GEAR UP FOR WINTER NOW & SAVE UP TO 30% OFF NEW ARRIVALS!
-            </Desc>
-            <Link to="/products/women">
+            <Desc>GEAR UP FOR WINTER NOW & SAVE UP TO 30% OFF NEW BOARDS!</Desc>
+            <Link to="/products/boards">
               <Button>SHOP NOW</Button>
             </Link>
           </InfoContainer>
@@ -168,10 +166,8 @@ const Slider = () => {
           </ImgContainer>
           <InfoContainer>
             <Title>STYLE UP</Title>
-            <Desc>
-              "DON'T COMPROMISE ON STYLE! GET 35% OFF PURCHASE OF $100 OR MORE!"
-            </Desc>
-            <Link to="/products/women">
+            <Desc>"DON'T COMPROMISE ON STYLE! ALL PANTS UP TO 45% OFF!"</Desc>
+            <Link to="/products/pants">
               <Button>SHOP NOW</Button>
             </Link>
           </InfoContainer>

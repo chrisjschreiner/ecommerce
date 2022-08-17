@@ -6,7 +6,7 @@ import { mobile } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logoutUser } from "../redux/features/userSlice";
-import { clearCart } from "../redux/features/cartSlice";
+// import { clearCart } from "../redux/features/cartSlice";
 
 const Container = styled.div`
   height: 60px;
@@ -77,7 +77,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const handleClick = () => {
     dispatch(logoutUser());
-    dispatch(clearCart());
+    // dispatch(clearCart());
   };
 
   return (

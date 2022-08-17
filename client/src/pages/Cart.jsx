@@ -1,6 +1,6 @@
 // import { Add, Remove } from "@material-ui/icons";
-import { useSelector } from "react-redux";
-import { removeItem } from "../redux/features/cartSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { calculateTotals, removeProduct } from "../redux/features/cartSlice";
 import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
@@ -11,7 +11,6 @@ import { useEffect, useState } from "react";
 import { userRequest } from "../requestMethods";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -25,24 +24,7 @@ const Wrapper = styled.div`
 const Title = styled.h1`
   font-weight: 300;
   text-align: center;
-`;
-
-// const Top = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   padding: 20px;
-// `;
-
-const TopButton = styled.button`
-  padding: 10px;
-  margin: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  border: ${(props) => props.type === "filled" && "none"};
-  background-color: ${(props) =>
-    props.type === "filled" ? "black" : "transparent"};
-  color: ${(props) => props.type === "filled" && "white"};
+  margin-bottom: 15px;
 `;
 
 const Bottom = styled.div`
@@ -146,7 +128,22 @@ const SummaryItemText = styled.span``;
 
 const SummaryItemPrice = styled.span``;
 
-const Button = styled.button`
+const RemoveButton = styled.button`
+  /* width: 10%; */
+  height: 30px;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: ${(props) => props.type === "filled" && "none"};
+  background-color: ${(props) =>
+    props.type === "filled" ? "black" : "transparent"};
+  color: ${(props) => props.type === "filled" && "white"};
+`;
+
+const TopButton = styled.button`
   width: 100%;
   padding: 10px;
   background-color: black;
@@ -155,15 +152,32 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+const BottomButton = styled.button`
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  border: ${(props) => props.type === "filled" && "none"};
+  background-color: ${(props) =>
+    props.type === "filled" ? "black" : "transparent"};
+  color: ${(props) => props.type === "filled" && "white"};
+`;
+
 const Cart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+  const { products } = useSelector((state) => state.cart);
   const [stripeToken, setStripeToken] = useState(null);
   const history = useHistory();
+  const areProducts = products.length > 0;
 
   const onToken = (token) => {
     setStripeToken(token);
   };
+
+  useEffect(() => {
+    dispatch(calculateTotals());
+  }, [products, dispatch]);
 
   useEffect(() => {
     const makeRequest = async () => {
@@ -189,11 +203,12 @@ const Cart = () => {
       <Navbar />
       <Announcement />
       <Wrapper>
-        <Title>YOUR BAG</Title>
+        {areProducts ? (
+          <Title>YOUR BAG</Title>
+        ) : (
+          <Title>YOUR BAG IS EMPTY</Title>
+        )}
         {/* <Top> */}
-        <Link to="/">
-          <TopButton>CONTINUE SHOPPING</TopButton>
-        </Link>
         <Bottom>
           <Info>
             {cart.products.map((product) => (
@@ -223,13 +238,13 @@ const Cart = () => {
                     $ {product.price * product.quantity}
                   </ProductPrice>
                 </PriceDetail>
-                <TopButton
+                <RemoveButton
                   onClick={() => {
-                    dispatch(removeItem(product._id));
+                    dispatch(removeProduct(product._id));
                   }}
                 >
                   remove
-                </TopButton>
+                </RemoveButton>
               </Product>
             ))}
             <Hr />
@@ -252,18 +267,23 @@ const Cart = () => {
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
             </SummaryItem>
-            <StripeCheckout
-              name="SCHRE. SHOP"
-              image="https://avatars.githubusercontent.com/u/1486366?v=4"
-              billingAddress
-              shippingAddress
-              description={`Your total is $${cart.total}`}
-              amount={cart.total * 100}
-              token={onToken}
-              stripeKey={KEY}
-            >
-              <Button>CHECKOUT NOW</Button>
-            </StripeCheckout>
+            {areProducts && (
+              <StripeCheckout
+                name="SCHRE. SHOP"
+                image="https://avatars.githubusercontent.com/u/1486366?v=4"
+                billingAddress
+                shippingAddress
+                description={`Your total is $${cart.total}`}
+                amount={cart.total * 100}
+                token={onToken}
+                stripeKey={KEY}
+              >
+                <TopButton>CHECKOUT NOW</TopButton>
+              </StripeCheckout>
+            )}
+            <Link to="/">
+              <BottomButton>CONTINUE SHOPPING</BottomButton>
+            </Link>
           </Summary>
         </Bottom>
       </Wrapper>

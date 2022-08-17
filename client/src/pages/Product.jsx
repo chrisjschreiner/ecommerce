@@ -8,8 +8,8 @@ import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { publicRequest } from "../requestMethods";
-import { addProduct } from "../redux/features/cartSlice";
-import { useDispatch } from "react-redux";
+import { addProduct, calculateTotals } from "../redux/features/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Container = styled.div``;
 
@@ -127,6 +127,7 @@ const Product = () => {
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
+  const { products } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -138,6 +139,10 @@ const Product = () => {
     };
     getProduct();
   }, [id]);
+
+  useEffect(() => {
+    dispatch(calculateTotals());
+  }, [products, dispatch]);
 
   const handleQuantity = (type) => {
     if (type === "dec") {

@@ -71,10 +71,6 @@ const Button = styled.button`
 //   cursor: pointer;
 // `;
 
-const Error = styled.span`
-  color: red;
-`;
-
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -82,7 +78,8 @@ const Login = () => {
   // user in state.user is from userSlice file and is the name
   // property in the userSlice. useSelector allows you to extract
   // data from the Redux store state
-  const { isFetching, error } = useSelector((state) => state.user);
+  // const { isFetching, error } = useSelector((state) => state.user);
+  const { isFetching } = useSelector((state) => state.user);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -112,9 +109,6 @@ const Login = () => {
             </Link>
           </ButtonContainer>
         </Form>
-        {error && <Error>Something went wrong...</Error>}
-        {/* <Link>DON'T REMEMBER YOUR PASSWORD?</Link>
-        <Link>CREATE A NEW ACCOUNT</Link> */}
       </Wrapper>
     </Container>
   );

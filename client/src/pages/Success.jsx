@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
+import { clearCart } from "../redux/features/cartSlice";
 import { userRequest } from "../requestMethods";
 
 const Success = () => {
@@ -10,7 +12,10 @@ const Success = () => {
   const cart = location.state.cart;
   const currentUser = useSelector((state) => state.user.currentUser);
   const [orderId, setOrderId] = useState(null);
-
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(clearCart());
+  };
   useEffect(() => {
     const createOrder = async () => {
       try {
@@ -42,7 +47,11 @@ const Success = () => {
       {orderId
         ? `Order has been created successfully. Your order number is ${orderId}`
         : `Successfull. Your order is being prepared...`}
-      <button style={{ padding: 10, marginTop: 20 }}>Go to Homepage</button>
+      <Link to="/">
+        <button onClick={handleClick} style={{ padding: 10, marginTop: 20 }}>
+          Go to Homepage
+        </button>
+      </Link>
     </div>
   );
 };

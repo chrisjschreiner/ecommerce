@@ -1,7 +1,6 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import { useState } from "react";
 import styled from "styled-components";
-import { sliderItems } from "../data";
 import { mobile } from "../responsive";
 import { Link } from "react-router-dom";
 
@@ -17,17 +16,15 @@ const Container = styled.div`
 const Arrow = styled.div`
   width: 50px;
   height: 50px;
-  background-color: #fff7f7;
+  background-color: #e0e0e0;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 0;
-  bottom: 0;
+  margin-top: 375px;
   left: ${(props) => props.direction === "left" && "10px"};
   right: ${(props) => props.direction === "right" && "10px"};
-  margin: auto;
   cursor: pointer;
   opacity: 0.5;
   z-index: 2;
@@ -53,8 +50,21 @@ const ImgContainer = styled.div`
   flex: 1;
 `;
 
-const Image = styled.img`
+const Image1 = styled.img`
+  height: 60%;
+  padding-top: 110px;
+  padding-left: 100px;
+`;
+
+const Image2 = styled.img`
+  height: 85%;
+  padding-left: 90px;
+`;
+
+const Image3 = styled.img`
   height: 80%;
+  padding-top: 50px;
+  padding-left: 160px;
 `;
 
 const InfoContainer = styled.div`
@@ -95,7 +105,7 @@ const Slider = () => {
       <Arrow direction="left" onClick={() => handleClick("left")}>
         <ArrowLeftOutlined />
       </Arrow>
-      <Wrapper slideIndex={slideIndex}>
+      {/* <Wrapper slideIndex={slideIndex}>
         {sliderItems.map((item) => (
           <Slide bg={item.bg} key={item.id}>
             <ImgContainer>
@@ -110,6 +120,62 @@ const Slider = () => {
             </InfoContainer>
           </Slide>
         ))}
+      </Wrapper> */}
+      <Wrapper slideIndex={slideIndex}>
+        <Slide
+          style={{
+            backgroundColor: "#f5fafd",
+          }}
+        >
+          <ImgContainer>
+            <Image1 src="https://i.ibb.co/Wpxw1yZ/summersaleimagesmaller3.png" />
+          </ImgContainer>
+          <InfoContainer>
+            <Title>SUMMER SALE</Title>
+            <Desc>ALL PAST SEASON'S GEAR UP TO 75% OFF!</Desc>
+            <Link to="/products/women">
+              <Button>SHOP NOW</Button>
+            </Link>
+          </InfoContainer>
+        </Slide>
+
+        <Slide
+          style={{
+            backgroundColor: "#f5fafd",
+          }}
+        >
+          <ImgContainer>
+            <Image2 src="https://i.ibb.co/fnxrz3w/karsten-winegeart-1h-HLe-BZy2kk-unsplash-removebg-preview.png" />
+          </ImgContainer>
+          <InfoContainer>
+            <Title>NEW GEAR</Title>
+            <Desc>
+              GEAR UP FOR WINTER NOW & SAVE UP TO 30% OFF NEW ARRIVALS!
+            </Desc>
+            <Link to="/products/women">
+              <Button>SHOP NOW</Button>
+            </Link>
+          </InfoContainer>
+        </Slide>
+
+        <Slide
+          style={{
+            backgroundColor: "#fbf0f4",
+          }}
+        >
+          <ImgContainer>
+            <Image3 src="https://i.ibb.co/wpwdM1H/sliderimg3-bigger.png" />
+          </ImgContainer>
+          <InfoContainer>
+            <Title>STYLE UP</Title>
+            <Desc>
+              "DON'T COMPROMISE ON STYLE! GET 35% OFF PURCHASE OF $100 OR MORE!"
+            </Desc>
+            <Link to="/products/women">
+              <Button>SHOP NOW</Button>
+            </Link>
+          </InfoContainer>
+        </Slide>
       </Wrapper>
       <Arrow direction="right" onClick={() => handleClick("right")}>
         <ArrowRightOutlined />

@@ -46,6 +46,7 @@ const ProductList = () => {
 
   const handleFilters = (e) => {
     const value = e.target.value;
+
     setFilters({
       ...filters,
       [e.target.name]: value,
@@ -61,7 +62,7 @@ const ProductList = () => {
         <Filter>
           <FilterText>Filter Products:</FilterText>
           <Select name="color" onChange={handleFilters}>
-            <Option disabled>Color</Option>
+            <Option value="">Color</Option>
             <Option>white</Option>
             <Option>black</Option>
             <Option>red</Option>
@@ -70,7 +71,7 @@ const ProductList = () => {
             <Option>green</Option>
           </Select>
           <Select name="size" onChange={handleFilters}>
-            <Option disabled>Size</Option>
+            <Option value="">Size</Option>
             <Option>S</Option>
             <Option>M</Option>
             <Option>L</Option>

@@ -1,5 +1,6 @@
-import { Add, Remove } from "@material-ui/icons";
+// import { Add, Remove } from "@material-ui/icons";
 import { useSelector } from "react-redux";
+import { removeItem } from "../redux/features/cartSlice";
 import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
@@ -10,6 +11,7 @@ import { useEffect, useState } from "react";
 import { userRequest } from "../requestMethods";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -41,15 +43,6 @@ const TopButton = styled.button`
   background-color: ${(props) =>
     props.type === "filled" ? "black" : "transparent"};
   color: ${(props) => props.type === "filled" && "white"};
-`;
-
-const TopTexts = styled.div`
-  ${mobile({ display: "none" })}
-`;
-const TopText = styled.span`
-  text-decoration: underline;
-  cursor: pointer;
-  margin: 0px 10px;
 `;
 
 const Bottom = styled.div`
@@ -159,9 +152,11 @@ const Button = styled.button`
   background-color: black;
   color: white;
   font-weight: 600;
+  cursor: pointer;
 `;
 
 const Cart = () => {
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const [stripeToken, setStripeToken] = useState(null);
   const history = useHistory();
@@ -199,13 +194,6 @@ const Cart = () => {
         <Link to="/">
           <TopButton>CONTINUE SHOPPING</TopButton>
         </Link>
-
-        {/* <TopTexts>
-            <TopText>Shopping Bag(2)</TopText>
-            <TopText>Your Wishlist (0)</TopText>
-          </TopTexts> */}
-        {/* <TopButton type="filled">CHECKOUT NOW</TopButton> */}
-        {/* </Top> */}
         <Bottom>
           <Info>
             {cart.products.map((product) => (
@@ -227,14 +215,21 @@ const Cart = () => {
                 </ProductDetail>
                 <PriceDetail>
                   <ProductAmountContainer>
-                    <Remove />
-                    <ProductAmount>{product.quantity}</ProductAmount>
-                    <Add />
+                    {/* <Remove /> */}
+                    <ProductAmount>qty: {product.quantity}</ProductAmount>
+                    {/* <Add /> */}
                   </ProductAmountContainer>
                   <ProductPrice>
                     $ {product.price * product.quantity}
                   </ProductPrice>
                 </PriceDetail>
+                <TopButton
+                  onClick={() => {
+                    dispatch(removeItem(product._id));
+                  }}
+                >
+                  remove
+                </TopButton>
               </Product>
             ))}
             <Hr />

@@ -12,8 +12,7 @@ const Container = styled.div`
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url("https://images.pexels.com/photos/6984650/pexels-photo-6984650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
-      center;
+    url("https://i.ibb.co/q0Cy1Fz/pexels-mikhail-nilov-8412638.jpg") center;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -59,6 +58,10 @@ const Button = styled.button`
   background-color: teal;
   color: white;
   cursor: pointer;
+  &::disabled {
+    color: green;
+    cursor: not-allowed;
+  }
 
   // const Link = styled.a
 `;
@@ -76,6 +79,9 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  // user in state.user is from userSlice file and is the name
+  // property in the userSlice. useSelector allows you to extract
+  // data from the Redux store state
   const { isFetching, error } = useSelector((state) => state.user);
 
   const handleClick = (e) => {
@@ -88,26 +94,27 @@ const Login = () => {
         <Title>SIGN IN</Title>
         <Form>
           <Input
+            type="text"
             placeholder="username"
             onChange={(e) => setUsername(e.target.value)}
           />
           <Input
-            placeholder="password"
             type="password"
+            placeholder="password"
             onChange={(e) => setPassword(e.target.value)}
           />
+          <ButtonContainer>
+            <Button onClick={handleClick} disabled={isFetching}>
+              LOGIN
+            </Button>
+            <Link to="/">
+              <Button>BACK</Button>
+            </Link>
+          </ButtonContainer>
         </Form>
-        <ButtonContainer>
-          <Button onClick={handleClick} disabled={isFetching}>
-            LOGIN
-          </Button>
-          <Link to="/">
-            <Button>BACK</Button>
-          </Link>
-        </ButtonContainer>
-        {/* {error && <Error>Something went wrong...</Error>} */}
+        {error && <Error>Something went wrong...</Error>}
         {/* <Link>DON'T REMEMBER YOUR PASSWORD?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link> */}
+        <Link>CREATE A NEW ACCOUNT</Link> */}
       </Wrapper>
     </Container>
   );

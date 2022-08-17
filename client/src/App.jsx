@@ -4,6 +4,7 @@ import ProductList from "./pages/ProductList";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
+import NotFound from "./components/NotFound";
 import {
   BrowserRouter as Router,
   Switch,
@@ -39,6 +40,10 @@ const App = () => {
         <Route path="/register">
           {user ? <Redirect to="/" /> : <Register />}
         </Route>
+        <Route path="/not-found">
+          <NotFound />
+        </Route>
+        <Redirect to="/not-found" />
       </Switch>
     </Router>
   );

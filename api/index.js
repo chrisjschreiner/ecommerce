@@ -11,16 +11,16 @@ const orderRoute = require("./routes/order");
 const stripeRoute = require("./routes/stripe");
 const cors = require("cors");
 
-
 mongoose
   .connect(process.env.MONGO_URL)
-  .then(() => console.log("DB Connection Successfull!"))
+  .then(() => console.log("DB Connection Successful!"))
   .catch((err) => {
     console.log(err);
   });
 
 app.use(cors());
 app.use(express.json());
+//Best practice to use plural words for rest api (users, products, etc.)
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);

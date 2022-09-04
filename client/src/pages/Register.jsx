@@ -1,4 +1,4 @@
-// import styled from "styled-components";
+// import styled from "styled-components/macro";
 // import { mobile, iPadsAndTablets } from "../responsive";
 // import { Link } from "react-router-dom";
 
@@ -95,7 +95,7 @@
 
 // export default Register;
 
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { register } from "../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
@@ -164,9 +164,9 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const Error = styled.span`
-  color: red;
-`;
+// const Error = styled.span`
+//   color: red;
+// `;
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
@@ -176,7 +176,8 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const dispatch = useDispatch();
-  const { isFetching, error } = useSelector((state) => state.user);
+  // const { isFetching, error } = useSelector((state) => state.user);
+  const { isFetching } = useSelector((state) => state.user);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -232,7 +233,7 @@ const Register = () => {
             </Link>
           </ButtonContainer>
         </Form>
-        {error && <Error>Something went wrong...</Error>}
+        {/* {error && <Error>Something went wrong...</Error>} */}
       </Wrapper>
     </Container>
   );

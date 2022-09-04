@@ -5,16 +5,17 @@ import Footer from "../components/Footer";
 import FeaturedBrands from "../components/FeaturedBrands";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
-import Slider from "../components/Slider";
+import ImageSlider from "../components/ImageSlider";
+import { SliderData } from "../data";
 
 const Home = () => {
   return (
     <div>
       <Announcement />
       <Navbar />
-      <Slider />
-      <FeaturedBrands />
+      <ImageSlider slides={SliderData} />
       <Categories />
+      <FeaturedBrands />
       <Newsletter />
       <Footer />
     </div>

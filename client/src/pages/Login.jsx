@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { login } from "../redux/apiCalls";
 import { iPadsAndTablets, mobile } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";

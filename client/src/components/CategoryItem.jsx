@@ -1,12 +1,31 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { mobile } from "../responsive";
+
+const ClickMe = styled.div`
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+  cursor: pointer;
+`;
 
 const Container = styled.div`
   flex: 1;
   margin: 3px;
   height: 70vh;
   position: relative;
+  &:hover ${ClickMe} {
+    opacity: 1;
+  }
 `;
 
 const Image = styled.img`
@@ -51,6 +70,7 @@ const CategoryItem = ({ item }) => {
           <Title>{item.title}</Title>
           <Button>SHOP NOW</Button>
         </Info>
+        <ClickMe />
       </Link>
     </Container>
   );

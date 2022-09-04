@@ -1,7 +1,7 @@
 // import { Add, Remove } from "@material-ui/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { calculateTotals, removeProduct } from "../redux/features/cartSlice";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
@@ -21,12 +21,6 @@ const Wrapper = styled.div`
   ${mobile({ padding: "10px" })}
 `;
 
-const Title = styled.h1`
-  font-weight: 300;
-  text-align: center;
-  margin-bottom: 15px;
-`;
-
 const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
@@ -40,6 +34,7 @@ const Info = styled.div`
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
   ${mobile({ flexDirection: "column" })}
 `;
 
@@ -60,8 +55,6 @@ const Details = styled.div`
 `;
 
 const ProductName = styled.span``;
-
-const ProductId = styled.span``;
 
 const ProductColor = styled.div`
   width: 20px;
@@ -102,6 +95,7 @@ const Hr = styled.hr`
   background-color: #eee;
   border: none;
   height: 1px;
+  margin-top: 5px;
 `;
 
 const Summary = styled.div`
@@ -109,7 +103,7 @@ const Summary = styled.div`
   border: 0.5px solid lightgray;
   border-radius: 10px;
   padding: 20px;
-  height: 50vh;
+  height: 44vh;
 `;
 
 const SummaryTitle = styled.h1`
@@ -127,6 +121,33 @@ const SummaryItem = styled.div`
 const SummaryItemText = styled.span``;
 
 const SummaryItemPrice = styled.span``;
+
+const BagEmptyWrapper = styled.div`
+  margin: 0 auto;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Title = styled.h1`
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
+`;
+
+const BagEmptyContinueShoppingButton = styled.button`
+  width: 285px;
+
+  padding: 10px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  border: ${(props) => props.type === "filled" && "none"};
+  background-color: ${(props) =>
+    props.type === "filled" ? "black" : "transparent"};
+  color: ${(props) => props.type === "filled" && "white"};
+`;
 
 const RemoveButton = styled.button`
   /* width: 10%; */
@@ -184,10 +205,7 @@ const Cart = () => {
       try {
         const res = await userRequest.post("/checkout/payment", {
           tokenId: stripeToken.id,
-          // codebase states below. check 3rd vid @ 1:20
-          amount: 500,
-          // YT video states amount: cart.total * 100,
-          // Also, dependency below states cart.total
+          amount: cart.total * 100,
         });
         history.push("/success", {
           stripeData: res.data,
@@ -196,7 +214,6 @@ const Cart = () => {
       } catch {}
     };
     stripeToken && makeRequest();
-    // codebase does not have cart, but console gave error
   }, [stripeToken, cart.total, cart, history]);
   return (
     <Container>
@@ -206,22 +223,25 @@ const Cart = () => {
         {areProducts ? (
           <Title>YOUR BAG</Title>
         ) : (
-          <Title>YOUR BAG IS EMPTY</Title>
+          <BagEmptyWrapper>
+            <Title>YOUR BAG IS EMPTY</Title>
+            <Link to="/">
+              <BagEmptyContinueShoppingButton>
+                CONTINUE SHOPPING
+              </BagEmptyContinueShoppingButton>
+            </Link>
+          </BagEmptyWrapper>
         )}
-        {/* <Top> */}
         <Bottom>
           <Info>
             {cart.products.map((product) => (
-              <Product>
+              <Product key={product._id}>
                 <ProductDetail>
                   <Image src={product.img} />
                   <Details>
                     <ProductName>
                       <b>Product:</b> {product.title}
                     </ProductName>
-                    <ProductId>
-                      <b>ID:</b> {product._id}
-                    </ProductId>
                     <ProductColor color={product.color} />
                     <ProductSize>
                       <b>Size:</b> {product.size}
@@ -247,47 +267,49 @@ const Cart = () => {
                 </RemoveButton>
               </Product>
             ))}
-            <Hr />
+            {areProducts && <Hr />}
           </Info>
-          <Summary>
-            <SummaryTitle>ORDER SUMMARY</SummaryTitle>
-            <SummaryItem>
-              <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>$ 5.90</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Shipping Discount</SummaryItemText>
-              <SummaryItemPrice>$ -5.90</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem type="total">
-              <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
-            </SummaryItem>
-            {areProducts && (
-              <StripeCheckout
-                name="SCHRE. SHOP"
-                image="https://avatars.githubusercontent.com/u/1486366?v=4"
-                billingAddress
-                shippingAddress
-                description={`Your total is $${cart.total}`}
-                amount={cart.total * 100}
-                token={onToken}
-                stripeKey={KEY}
-              >
-                <TopButton>CHECKOUT NOW</TopButton>
-              </StripeCheckout>
-            )}
-            <Link to="/">
-              <BottomButton>CONTINUE SHOPPING</BottomButton>
-            </Link>
-          </Summary>
+          {areProducts && (
+            <Summary>
+              <SummaryTitle>ORDER SUMMARY</SummaryTitle>
+              <SummaryItem>
+                <SummaryItemText>Subtotal</SummaryItemText>
+                <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
+              </SummaryItem>
+              <SummaryItem>
+                <SummaryItemText>Estimated Shipping</SummaryItemText>
+                <SummaryItemPrice>$ 5.90</SummaryItemPrice>
+              </SummaryItem>
+              <SummaryItem>
+                <SummaryItemText>Shipping Discount</SummaryItemText>
+                <SummaryItemPrice>$ -5.90</SummaryItemPrice>
+              </SummaryItem>
+              <SummaryItem type="total">
+                <SummaryItemText>Total</SummaryItemText>
+                <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
+              </SummaryItem>
+              {areProducts && (
+                <StripeCheckout
+                  name="SCHR. SHOP"
+                  image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq1p4AEuJJAL6wJLAVtYtYvjGLSikN6dYmpA&usqp=CAU"
+                  billingAddress
+                  shippingAddress
+                  description={`Your total is $${cart.total}`}
+                  amount={cart.total * 100}
+                  token={onToken}
+                  stripeKey={KEY}
+                >
+                  <TopButton>CHECKOUT NOW</TopButton>
+                </StripeCheckout>
+              )}
+              <Link to="/">
+                <BottomButton>CONTINUE SHOPPING</BottomButton>
+              </Link>
+            </Summary>
+          )}
         </Bottom>
       </Wrapper>
-      <Footer />
+      {areProducts && <Footer />}
     </Container>
   );
 };

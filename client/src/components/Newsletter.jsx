@@ -1,10 +1,10 @@
 import { Send } from "@material-ui/icons";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { mobile } from "../responsive";
 
 const Container = styled.div`
   height: 60vh;
-  background-color: #fcf5f5;
+  background-color: #f5fafd;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,7 +20,6 @@ const Desc = styled.div`
   font-weight: 300;
   margin-bottom: 20px;
   ${mobile({ textAlign: "center" })}
-
 `;
 
 const InputContainer = styled.div`
@@ -52,7 +51,7 @@ const Newsletter = () => {
       <Title>Newsletter</Title>
       <Desc>Get timely updates from your favorite products.</Desc>
       <InputContainer>
-        <Input placeholder="Your email" />
+        <Input placeholder="Enter your email" />
         <Button>
           <Send />
         </Button>

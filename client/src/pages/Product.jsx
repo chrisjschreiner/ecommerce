@@ -1,11 +1,11 @@
 import { Add, Remove } from "@material-ui/icons";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import { mobile } from "../responsive";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { publicRequest } from "../requestMethods";
 import { addProduct, calculateTotals } from "../redux/features/cartSlice";
@@ -84,10 +84,11 @@ const FilterSize = styled.select`
 const FilterSizeOption = styled.option``;
 
 const AddContainer = styled.div`
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  width: 80%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 10px;
   ${mobile({ width: "100%" })}
 `;
 
@@ -196,6 +197,9 @@ const Product = () => {
               />
             </AmountContainer>
             <Button onClick={handleClick}>ADD TO CART</Button>
+            <Link to="/">
+              <Button>CONTINUE SHOPPING</Button>
+            </Link>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

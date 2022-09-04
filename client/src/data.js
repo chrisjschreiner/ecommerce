@@ -1,43 +1,43 @@
-export const sliderItems = [
+export const SliderData = [
   {
     id: 1,
-    img: "https://i.ibb.co/Wpxw1yZ/summersaleimagesmaller3.png",
+    img: "https://images.pexels.com/photos/38242/pexels-photo-38242.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "SUMMER SALE",
-    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-    bg: "f5fafd",
+    desc: "ALL PAST SEASON'S JACKETS UP TO 75% OFF!",
+    // bg: "f5fafd",
   },
   {
     id: 2,
-    img: "https://i.ibb.co/fnxrz3w/karsten-winegeart-1h-HLe-BZy2kk-unsplash-removebg-preview.png",
-    title: "AUTUMN COLLECTION",
-    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-    bg: "fcf1ed",
+    img: "https://i.ibb.co/xYGgC8y/2ndslide.png",
+    title: "NEW GEAR",
+    desc: "GEAR UP FOR WINTER NOW & SAVE UP TO 30% OFF NEW BOARDS!",
+    // bg: "fcf1ed",
   },
   {
     id: 3,
-    img: "https://i.ibb.co/wpwdM1H/sliderimg3-bigger.png",
-    title: "LOUNGEWEAR LOVE",
-    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-    bg: "fbf0f4",
+    img: "https://images.pexels.com/photos/4678977/pexels-photo-4678977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    title: "STYLE UP",
+    desc: "DON'T COMPROMISE ON STYLE! ALL PANTS UP TO 45% OFF!",
+    // bg: "fbf0f4",
   },
 ];
 
 export const categories = [
   {
     id: 1,
-    img: "https://images.pexels.com/photos/7406849/pexels-photo-7406849.jpeg?auto=compress&cs=tinysrgb&w=600",
+    img: "https://images.pexels.com/photos/7406838/pexels-photo-7406838.jpeg?auto=compress&cs=tinysrgb&w=600",
     title: "JACKETS",
     cat: "jackets",
   },
   {
     id: 2,
-    img: "https://static3.jonessnowboards.com/1205-large_default2x/airheart.jpg",
+    img: "https://i.ibb.co/LRvm8j8/pexels-jo-l-super-2071654.jpg",
     title: "BOARDS",
     cat: "boards",
   },
   {
     id: 3,
-    img: "https://images.pexels.com/photos/7406838/pexels-photo-7406838.jpeg?auto=compress&cs=tinysrgb&w=600",
+    img: "https://www.burton.com/static/product/W23/10101109001_4.png?impolicy=bgwhite&imwidth=1586",
     title: "PANTS",
     cat: "pants",
   },

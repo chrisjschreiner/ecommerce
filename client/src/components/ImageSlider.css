@@ -37,8 +37,10 @@
 
 .info-container {
   display: flex;
+  /* display: inline-block; */
   flex-direction: column;
   width: 40%;
+  /* height: 100%; */
   position: absolute;
   top: 45%;
   right: 30px;
@@ -84,34 +86,49 @@
   z-index: 1;
 }
 
+.button.active {
+  opacity: 1;
+  transition-delay: 700ms;
+  padding: 0.5rem;
+  margin-top: 2.5rem;
+  width: 8rem;
+  font-size: 20px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button {
+  opacity: 0;
+  padding: 0.5rem;
+  margin-top: 2.5rem;
+  width: 8rem;
+  font-size: 20px;
+  transition: 200ms opacity ease-in-out;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.btn {
+  opacity: 1;
+  position: relative;
+}
+
 @media only screen and (max-width: 768px) {
-  .info-container {
-    display: none;
-  }
+  .info-container,
   .slider {
     display: none;
   }
 }
 
 @media only screen and (max-width: 1250px) {
-  .title.active {
-    font-size: 3rem;
-  }
-}
-
-@media only screen and (max-width: 1250px) {
+  .title.active,
   .title {
     font-size: 3rem;
   }
 }
 
 @media only screen and (max-width: 1250px) {
-  .desc.active {
-    font-size: 1rem;
-  }
-}
-
-@media only screen and (max-width: 1250px) {
+  .desc.active,
   .desc {
     font-size: 1rem;
   }

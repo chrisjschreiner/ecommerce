@@ -4,21 +4,21 @@ export const SliderData = [
     img: "https://images.pexels.com/photos/38242/pexels-photo-38242.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "SUMMER SALE",
     desc: "ALL PAST SEASON'S JACKETS UP TO 75% OFF!",
-    // bg: "f5fafd",
+    cat: "jackets",
   },
   {
     id: 2,
     img: "https://i.ibb.co/xYGgC8y/2ndslide.png",
     title: "NEW GEAR",
     desc: "GEAR UP FOR WINTER NOW & SAVE UP TO 30% OFF NEW BOARDS!",
-    // bg: "fcf1ed",
+    cat: "boards",
   },
   {
     id: 3,
     img: "https://images.pexels.com/photos/4678977/pexels-photo-4678977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "STYLE UP",
     desc: "DON'T COMPROMISE ON STYLE! ALL PANTS UP TO 45% OFF!",
-    // bg: "fbf0f4",
+    cat: "pants",
   },
 ];
 

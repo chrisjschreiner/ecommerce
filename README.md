@@ -8,7 +8,7 @@
   <p align="center">
     E-commerce web application built using the MERN stack, and inspired by my love for snowboarding and all things outdoors. May need to wait up to a minute to initially view products.
     <br />
-    <a href="https://schr.onrender.com/"><Strong>View Site »</Strong></a>
+    <a href="https://schr-api.onrender.com"><Strong>View Site »</Strong></a>
   </p>
 </div>
 

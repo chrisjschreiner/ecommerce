@@ -6,7 +6,7 @@
 <h3 align="center">SCHR.</h3>
 
   <p align="center">
-    E-commerce web application built using the MERN stack, and inspired by my love for snowboarding and all things outdoors. May need to wait up to a minute to initially view products.
+    E-commerce web application built using the MERN stack, and inspired by my love for snowboarding and all things outdoors. Due to free hosting, may need to wait up to 45 seconds to initially view products.
     <br />
     <a href="https://schr.onrender.com"><Strong>View Site »</Strong></a>
   </p>

@@ -32,6 +32,7 @@ https://github.com/chrisjschreiner/ecommerce/assets/82328598/c48c36ca-1c94-4b32-
 
 ### Mobile View
 
+https://github.com/chrisjschreiner/ecommerce/assets/82328598/32f01228-f539-42ab-857d-07d4d6eb98da
 
 ## Built With
 

@@ -36,9 +36,9 @@ https://github.com/chrisjschreiner/ecommerce/assets/82328598/4541a27a-4967-439b-
 
 ## Built With
 
-[![My Skills](https://skillicons.dev/icons?i=html,css,js,express,nodejs,mongodb,vscode&perline=18)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=react,redux,styledcomponents,materialui,express,nodejs,mongodb,vscode&perline=18)](https://skillicons.dev)
 
-Other technologies include mapbox, bcrypt, cloudinary, connect-flash, ejs, helmet, mongoose, multer, passport, sanitize-html.
+Other technologies include crypto-js, jsonwebtoken, mongoose, and stripe.
 
 <!-- LICENSE -->
 ## License

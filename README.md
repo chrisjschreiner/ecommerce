@@ -26,7 +26,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Portfolio Screen Shot][product-screenshot]
+<video src='client/public/ecommerce_desktop_readme.mp4' />
 
 ## Built With
 

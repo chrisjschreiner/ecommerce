@@ -30,6 +30,9 @@
 
 https://github.com/chrisjschreiner/ecommerce/assets/82328598/525badc1-1f00-4577-8301-1b8284b4d4ec
 
+### Mobile View
+
+
 ## Built With
 
 [![My Skills](https://skillicons.dev/icons?i=html,css,js,express,nodejs,mongodb,vscode&perline=18)](https://skillicons.dev)

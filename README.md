@@ -30,6 +30,8 @@
 
 https://github.com/chrisjschreiner/ecommerce/blob/main/client/public/ecommerce_desktop_readme.mp4
 
+https://github.com/chrisjschreiner/ecommerce/blob/main/client/public/ecommerce_desktop_readme.mp4
+
 ### Mobile View
 
 

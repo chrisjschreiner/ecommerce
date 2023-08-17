@@ -28,8 +28,8 @@
 
 ### Desktop View
 
-https://github.com/chrisjschreiner/ecommerce/assets/82328598/525badc1-1f00-4577-8301-1b8284b4d4ec
-
+[https://github.com/chrisjschreiner/ecommerce/assets/82328598/525badc1-1f00-4577-8301-1b8284b4d4ec
+](https://github.com/chrisjschreiner/ecommerce/blob/main/client/public/ecommerce_desktop_readme.mp4)
 ### Mobile View
 
 

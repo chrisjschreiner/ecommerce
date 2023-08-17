@@ -28,9 +28,7 @@
 
 ### Desktop View
 
-https://github.com/chrisjschreiner/ecommerce/blob/main/client/public/ecommerce_desktop_readme.mp4
-
-https://github.com/chrisjschreiner/ecommerce/blob/main/client/public/ecommerce_desktop_readme.mp4
+https://github.com/chrisjschreiner/ecommerce/assets/82328598/c48c36ca-1c94-4b32-942e-c35585778316
 
 ### Mobile View
 

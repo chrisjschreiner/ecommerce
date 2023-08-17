@@ -26,7 +26,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<video src="client/public/ecommerce_desktop_readme.mp4" width=180/>
+https//:github.com/chrisjschreiner/ecommerceclient/public/ecommerce_desktop_readme.mp4
 
 ## Built With
 
